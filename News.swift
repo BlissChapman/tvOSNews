@@ -10,6 +10,7 @@ import Foundation
 
 class News {
 
+    //NYTimes Developer API Key
     private let cocoanutsDemoAPIKey = "8da55c232e313144940b0d6811ae6ef2:19:73950529"
     enum Section: String {
         case home, world, national, politics, nyregion, business, opinion, technology, science, health, sports, arts, fashion, dining, travel, magazine, realestate
@@ -35,7 +36,6 @@ class News {
         //configure session
         let session = NSURLSession(configuration: .defaultSessionConfiguration())
         
-        print("sending off news request!")
         //create the task
         let task = session.dataTaskWithRequest(request) { (newsData, response, error) -> Void in
             
