@@ -48,7 +48,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("newsCellReuseID")! as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("newsCellReuseID")!
         
         cell.textLabel?.text = headlines[indexPath.row]
         
@@ -59,4 +59,3 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
 }
-

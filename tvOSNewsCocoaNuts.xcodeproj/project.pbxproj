@@ -15,13 +15,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A509E11F1C3DEAD100A6FF77 /* tvOSNewsCocoaNuts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvOSNewsCocoaNuts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A509E11F1C3DEAD100A6FF77 /* NewsStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A509E1221C3DEAD100A6FF77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A509E1241C3DEAD100A6FF77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A509E1271C3DEAD100A6FF77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A509E1291C3DEAD100A6FF77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A509E12B1C3DEAD100A6FF77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A509E1311C3DEADF00A6FF77 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = News.swift; path = ../News.swift; sourceTree = "<group>"; };
+		B8DACFB81C3DFA97006F56BE /* tvOSNewsCocoaNuts copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "tvOSNewsCocoaNuts copy-Info.plist"; path = "/Users/jloloew/Dropbox/Projects/iOS/tvOSNews/tvOSNewsCocoaNuts copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,13 +41,14 @@
 			children = (
 				A509E1211C3DEAD100A6FF77 /* tvOSNewsCocoaNuts */,
 				A509E1201C3DEAD100A6FF77 /* Products */,
+				B8DACFB81C3DFA97006F56BE /* tvOSNewsCocoaNuts copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		A509E1201C3DEAD100A6FF77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A509E11F1C3DEAD100A6FF77 /* tvOSNewsCocoaNuts.app */,
+				A509E11F1C3DEAD100A6FF77 /* NewsStream.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,9 +69,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A509E11E1C3DEAD100A6FF77 /* tvOSNewsCocoaNuts */ = {
+		A509E11E1C3DEAD100A6FF77 /* NewsStream */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A509E12E1C3DEAD100A6FF77 /* Build configuration list for PBXNativeTarget "tvOSNewsCocoaNuts" */;
+			buildConfigurationList = A509E12E1C3DEAD100A6FF77 /* Build configuration list for PBXNativeTarget "NewsStream" */;
 			buildPhases = (
 				A509E11B1C3DEAD100A6FF77 /* Sources */,
 				A509E11C1C3DEAD100A6FF77 /* Frameworks */,
@@ -79,9 +81,9 @@
 			);
 			dependencies = (
 			);
-			name = tvOSNewsCocoaNuts;
+			name = NewsStream;
 			productName = tvOSNewsCocoaNuts;
-			productReference = A509E11F1C3DEAD100A6FF77 /* tvOSNewsCocoaNuts.app */;
+			productReference = A509E11F1C3DEAD100A6FF77 /* NewsStream.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -96,6 +98,7 @@
 				TargetAttributes = {
 					A509E11E1C3DEAD100A6FF77 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = VM5XXWMN9Y;
 					};
 				};
 			};
@@ -112,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A509E11E1C3DEAD100A6FF77 /* tvOSNewsCocoaNuts */,
+				A509E11E1C3DEAD100A6FF77 /* NewsStream */,
 			);
 		};
 /* End PBXProject section */
@@ -240,9 +243,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = tvOSNewsCocoaNuts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.tvOSNewsCocoaNuts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinloew.NewsStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -252,9 +256,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = tvOSNewsCocoaNuts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.tvOSNewsCocoaNuts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinloew.NewsStream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -271,13 +276,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A509E12E1C3DEAD100A6FF77 /* Build configuration list for PBXNativeTarget "tvOSNewsCocoaNuts" */ = {
+		A509E12E1C3DEAD100A6FF77 /* Build configuration list for PBXNativeTarget "NewsStream" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A509E12F1C3DEAD100A6FF77 /* Debug */,
 				A509E1301C3DEAD100A6FF77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
