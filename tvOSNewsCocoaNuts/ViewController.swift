@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -53,6 +54,12 @@ extension ViewController: UITableViewDataSource {
         cell!.textLabel?.text = headlines[indexPath.row]
         
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: headlines[indexPath.row])
+        synthesizer.speakUtterance(utterance)
     }
 }
 
