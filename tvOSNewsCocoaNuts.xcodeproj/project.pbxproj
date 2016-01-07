@@ -11,6 +11,7 @@
 		A509E1251C3DEAD100A6FF77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509E1241C3DEAD100A6FF77 /* ViewController.swift */; };
 		A509E1281C3DEAD100A6FF77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A509E1261C3DEAD100A6FF77 /* Main.storyboard */; };
 		A509E12A1C3DEAD100A6FF77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A509E1291C3DEAD100A6FF77 /* Assets.xcassets */; };
+		A509E1321C3DEADF00A6FF77 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509E1311C3DEADF00A6FF77 /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		A509E1271C3DEAD100A6FF77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A509E1291C3DEAD100A6FF77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A509E12B1C3DEAD100A6FF77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A509E1311C3DEADF00A6FF77 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = News.swift; path = ../News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				A509E1221C3DEAD100A6FF77 /* AppDelegate.swift */,
+				A509E1311C3DEADF00A6FF77 /* News.swift */,
 				A509E1241C3DEAD100A6FF77 /* ViewController.swift */,
 				A509E1261C3DEAD100A6FF77 /* Main.storyboard */,
 				A509E1291C3DEAD100A6FF77 /* Assets.xcassets */,
@@ -131,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A509E1321C3DEADF00A6FF77 /* News.swift in Sources */,
 				A509E1251C3DEAD100A6FF77 /* ViewController.swift in Sources */,
 				A509E1231C3DEAD100A6FF77 /* AppDelegate.swift in Sources */,
 			);
