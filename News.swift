@@ -8,75 +8,75 @@
 
 import Foundation
 
-class News {
+struct News {
 
-    private let cocoanutsDemoAPIKey = "8da55c232e313144940b0d6811ae6ef2:19:73950529"
+    // NYTimes Developer API Key
+    private let cocoanutsDemoAPIKey = "770e0fabd8b04628936797cf9fa5f5a2"
+
     enum Section: String {
         case home, world, national, politics, nyregion, business, opinion, technology, science, health, sports, arts, fashion, dining, travel, magazine, realestate
     }
-    
+
     enum FetchResult {
-        case Success([String])
-        case Failure(String)
+        case success([String])
+        case failure(String)
     }
-    
-    func fetchTopStories(forSection section: News.Section, completion callback: (FetchResult) -> Void) {
-        guard let url = NSURL(string: "http://api.nytimes.com/svc/topstories/v1/\(section).json?api-key=\(cocoanutsDemoAPIKey)") else {
-            callback(FetchResult.Failure("Could not find news source."))
+
+    func fetchTopStories(forSection section: News.Section, completion callback: @escaping (FetchResult) -> Void) {
+        guard let url = URL(string: "http://api.nytimes.com/svc/topstories/v1/\(section).json?api-key=\(cocoanutsDemoAPIKey)") else {
+            callback(FetchResult.failure("Could not find news source."))
             return
         }
-        
+
         //configure request
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
+
         //configure session
-        let session = NSURLSession(configuration: .defaultSessionConfiguration())
-        
-        print("sending off news request!")
+        let session = URLSession(configuration: .default)
+
         //create the task
-        let task = session.dataTaskWithRequest(request) { (newsData, response, error) -> Void in
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                
+        let task = session.dataTask(with: request) { (newsData, response, error) -> Void in
+
+            DispatchQueue.main.async(execute: { () -> Void in
+
                 guard error == nil else {
-                    callback(FetchResult.Failure(error!.localizedDescription))
+                    callback(FetchResult.failure(error!.localizedDescription))
                     return
                 }
-                
+
                 guard let newsData = newsData else {
-                    callback(FetchResult.Failure("Failed to retrieve news data."))
+                    callback(FetchResult.failure("Failed to retrieve news data."))
                     return
                 }
-                
+
                 do {
-                    if let newsDictionary = try NSJSONSerialization.JSONObjectWithData(newsData, options: .AllowFragments) as? NSDictionary {
-                        
+                    if let newsDictionary = try JSONSerialization.jsonObject(with: newsData, options: .allowFragments) as? NSDictionary {
+
                         var headlines = [String]()
-                        
+
                         if let results = newsDictionary["results"] as? NSArray {
                             for result in results {
-                                if let headline = result["abstract"] as? String {
+                                if let headline = (result as? NSDictionary)?["abstract"] as? String {
                                     headlines.append(headline)
                                 }
                             }
                         }
-                        
+
                         if !headlines.isEmpty {
-                            callback(FetchResult.Success(headlines))
+                            callback(FetchResult.success(headlines))
                         } else {
-                            callback(FetchResult.Failure("Failed to parse your news headlines."))
+                            callback(FetchResult.failure("Failed to parse your news headlines."))
                         }
-                        
+
                     } else {
-                        callback(FetchResult.Failure("Failed to serialize your news data."))
+                        callback(FetchResult.failure("Failed to serialize your news data."))
                     }
                 } catch let error as NSError {
-                    callback(FetchResult.Failure(error.localizedDescription))
+                    callback(FetchResult.failure(error.localizedDescription))
                 }
-                
             })
         }
         

@@ -7,26 +7,27 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    
-    private var headlines = [String]()
-    
+    @IBOutlet weak private var tableView: UITableView!
+
+    fileprivate var headlines = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         let news = News()
         news.fetchTopStories(forSection: News.Section.world) { (fetchResult) -> Void in
             switch fetchResult {
-            case .Success(let headlines):
+            case .success(let headlines):
                 self.headlines = headlines
                 self.tableView.reloadData()
-            case .Failure(let description):
-                let errorAlert = UIAlertController(title: "Error", message: description, preferredStyle: .Alert)
-                self.presentViewController(errorAlert, animated: true, completion: nil)
+            case .failure(let description):
+                let errorAlert = UIAlertController(title: "Error", message: description, preferredStyle: .alert)
+                self.present(errorAlert, animated: true, completion: nil)
             }
         }
     }
@@ -38,24 +39,31 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return headlines.count
     }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("newsCellReuseID")!
-        
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "newsCellReuseID") else {
+            // time to freak out
+            return UITableViewCell()
+        }
+
         cell.textLabel?.text = headlines[indexPath.row]
-        
+
         return cell
     }
 }
 
 extension ViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: headlines[indexPath.row])
+        synthesizer.speak(utterance)
+    }
 }
